@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -82,6 +83,7 @@ public class PublicController {
     }
 
     @PostMapping("/login")
+    @SendTo("/user/status")
     public ResponseEntity<?> login(@RequestBody Users user) {
         try {
             authenticationManager.authenticate(
