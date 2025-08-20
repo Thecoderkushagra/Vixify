@@ -12,6 +12,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@CrossOrigin(origins = "http://localhost:3000/home")
 @RestController
 @RequestMapping("/user-changes")
 public class UserController {
@@ -19,6 +23,16 @@ public class UserController {
     private UserService userService;
     @Autowired
     private UserRepository userRepository;
+
+    @GetMapping("/onlineUser")
+    public ResponseEntity<List<String>> onlineUsers() {
+        List<Users> users = userService.onlineMembers();
+        List<String> newList = new ArrayList<>();
+        for (Users user : users) {
+            newList.add(user.getUserName());
+        }
+        return new ResponseEntity<>(newList, HttpStatus.OK);
+    }
 
     @PostMapping("/logout")
     @SendTo("/user/status")

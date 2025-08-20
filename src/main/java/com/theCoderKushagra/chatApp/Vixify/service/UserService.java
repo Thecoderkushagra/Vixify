@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 
@@ -56,6 +57,7 @@ public class UserService {
         }
     }
 
-
-
+    public List<Users> onlineMembers(){
+        return userRepository.findAllByStatus(Status.ONLINE);
+    }
 }
