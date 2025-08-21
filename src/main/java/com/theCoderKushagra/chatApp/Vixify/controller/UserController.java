@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000/home")
 @RestController
 @RequestMapping("/user-changes")
 public class UserController {
@@ -26,11 +25,14 @@ public class UserController {
 
     @GetMapping("/onlineUser")
     public ResponseEntity<List<String>> onlineUsers() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
         List<Users> users = userService.onlineMembers();
         List<String> newList = new ArrayList<>();
         for (Users user : users) {
             newList.add(user.getUserName());
         }
+        newList.remove(userName);
         return new ResponseEntity<>(newList, HttpStatus.OK);
     }
 

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
 @Controller
 @RequestMapping("/send-messages")
 public class MessageController {
