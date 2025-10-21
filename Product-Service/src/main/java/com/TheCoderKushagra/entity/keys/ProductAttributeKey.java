@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class ProductAttributeKey implements Serializable {
-    private Long product;
-    private Long attribute;
+    private String product;
+    private String attribute;
 
     // equals() and hashCode()
     @Override

@@ -1,6 +1,10 @@
 package com.TheCoderKushagra.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -8,11 +12,15 @@ import java.util.List;
 
 @Entity
 @Table(name = "products")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String productId;
 
     private String name;
 

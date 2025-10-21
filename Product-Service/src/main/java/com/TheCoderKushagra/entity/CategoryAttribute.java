@@ -1,14 +1,22 @@
 package com.TheCoderKushagra.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "category_attributes")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CategoryAttribute {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long attributeId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String attributeId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")

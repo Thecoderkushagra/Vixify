@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class ProductAttributeIndexKey implements Serializable {
-    private Long product;
+    private String product;
     private String attributeName;
 
     @Override

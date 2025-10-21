@@ -2,11 +2,20 @@ package com.TheCoderKushagra.entity;
 
 import com.TheCoderKushagra.entity.keys.ProductAttributeIndexKey;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "product_attribute_index")
 @IdClass(ProductAttributeIndexKey.class)
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductAttributeIndex {
 
     @Id
