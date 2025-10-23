@@ -26,9 +26,6 @@ public class Category {
     @JoinColumn(name = "parent_category_id")
     private Category parentCategory;
 
-    @Column(columnDefinition = "JSON")
-    private String categorySchema;
-
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CategoryAttribute> attributes = new ArrayList<>();
 }

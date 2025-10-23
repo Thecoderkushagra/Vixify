@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CategoryAttributeRepository extends JpaRepository<CategoryAttribute, String> {
-
+    CategoryAttribute findByAttributeName(String name);
 }

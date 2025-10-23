@@ -1,5 +1,6 @@
 package com.TheCoderKushagra.controller;
 
+import com.TheCoderKushagra.dto.ProductAttributeRequest;
 import com.TheCoderKushagra.dto.ProductRequest;
 import com.TheCoderKushagra.entity.Brand;
 import com.TheCoderKushagra.entity.Product;
@@ -40,4 +41,9 @@ public class SellerController {
         return new ResponseEntity<>(saved, HttpStatus.OK);
     }
 
+    @PostMapping("productAttribute")
+    public ResponseEntity<?> callCreateProduct(@RequestBody ProductAttributeRequest attribute) {
+
+        return new ResponseEntity<>("response",HttpStatus.OK);
+    }
 }

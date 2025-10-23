@@ -35,4 +35,8 @@ public class ProductService {
         brandByName.getProducts().add(mainProduct);
         return productRepository.save(mainProduct);
     }
+
+    public Product findProductByName(String name) {
+        return productRepository.findByName(name);
+    }
 }

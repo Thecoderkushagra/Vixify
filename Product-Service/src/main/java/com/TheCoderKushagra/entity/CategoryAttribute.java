@@ -19,11 +19,6 @@ public class CategoryAttribute {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
-
     private String attributeName;
-    private String dataType;   // varchar, int, decimal, boolean
     private Boolean isRequired;
-
-    @Column(columnDefinition = "JSON")
-    private String validationRules;
 }
