@@ -20,8 +20,8 @@ public class BrandService {
         return brandRepository.findAll();
     }
 
-    public Brand findBradById(String id){
-        return brandRepository.findById(id).orElseThrow(()-> new RuntimeException("INCORRECT ID!!"));
+    public Brand findBrandByName(String id){
+        return brandRepository.findByName(id);
     }
 
     public String deleteBrand(String id) {
