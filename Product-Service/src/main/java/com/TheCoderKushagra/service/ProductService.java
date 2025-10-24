@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class ProductService {
@@ -38,5 +39,9 @@ public class ProductService {
 
     public Product findProductByName(String name) {
         return productRepository.findByName(name);
+    }
+
+    public List<Product> allProducts() {
+        return productRepository.findAll();
     }
 }
