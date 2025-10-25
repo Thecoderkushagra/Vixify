@@ -49,5 +49,6 @@ public class SellerController {
     public ResponseEntity<ProductAttribute> callAddProductAttribute(@RequestBody ProductAttributeRequest attributeRequest) {
         ProductAttribute productAttribute = productAttributeService.saveProductAttribute(attributeRequest);
         return new ResponseEntity<>(productAttribute, HttpStatus.OK);
+        //pokemon
     }
 }
