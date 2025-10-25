@@ -4,7 +4,9 @@ import com.TheCoderKushagra.dto.ProductAttributeRequest;
 import com.TheCoderKushagra.dto.ProductRequest;
 import com.TheCoderKushagra.entity.Brand;
 import com.TheCoderKushagra.entity.Product;
+import com.TheCoderKushagra.entity.ProductAttribute;
 import com.TheCoderKushagra.service.BrandService;
+import com.TheCoderKushagra.service.ProductAttributeService;
 import com.TheCoderKushagra.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +20,8 @@ public class SellerController {
     private BrandService brandService;
     @Autowired
     private ProductService productService;
+    @Autowired
+    private ProductAttributeService productAttributeService;
 
     // MOCK OBJECT (userService.brandName)
     String brandName = "Apple";
@@ -42,8 +46,8 @@ public class SellerController {
     }
 
     @PostMapping("productAttribute")
-    public ResponseEntity<?> callCreateProduct(@RequestBody ProductAttributeRequest attribute) {
-
-        return new ResponseEntity<>("response",HttpStatus.OK);
+    public ResponseEntity<ProductAttribute> callAddProductAttribute(@RequestBody ProductAttributeRequest attributeRequest) {
+        ProductAttribute productAttribute = productAttributeService.saveProductAttribute(attributeRequest);
+        return new ResponseEntity<>(productAttribute, HttpStatus.OK);
     }
 }

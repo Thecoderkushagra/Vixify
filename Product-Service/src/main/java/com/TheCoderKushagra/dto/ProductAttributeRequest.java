@@ -1,8 +1,5 @@
 package com.TheCoderKushagra.dto;
 
-import com.TheCoderKushagra.entity.CategoryAttribute;
-import com.TheCoderKushagra.entity.Product;
-import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;

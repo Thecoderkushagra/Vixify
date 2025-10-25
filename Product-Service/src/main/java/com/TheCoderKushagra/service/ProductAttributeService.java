@@ -28,6 +28,5 @@ public class ProductAttributeService {
                 .attributeValue(productAttribute.getAttributeValue())
                 .build();
         return productAttributeRepository.save(myProductAttributes);
-
     }
 }

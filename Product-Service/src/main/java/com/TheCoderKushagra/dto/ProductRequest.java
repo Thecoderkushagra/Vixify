@@ -1,10 +1,7 @@
 package com.TheCoderKushagra.dto;
 
-import com.TheCoderKushagra.entity.Brand;
-import com.TheCoderKushagra.entity.Category;
 import com.TheCoderKushagra.entity.ProductAttribute;
 import com.TheCoderKushagra.entity.ProductAttributeIndex;
-import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
