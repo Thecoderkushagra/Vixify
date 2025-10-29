@@ -1,30 +1,33 @@
 package com.TheCoderKushagra.service;
 
+import com.TheCoderKushagra.dto.CategoryRequest;
+import com.TheCoderKushagra.dto.CategoryResponse;
 import com.TheCoderKushagra.entity.Category;
+import com.TheCoderKushagra.repository.CategoryAttributeRepository;
 import com.TheCoderKushagra.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Service
 public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
 
-    public Category saveCategory(Category category) {
-        Map<String, List<String>> schemaValue = new HashMap<>();
-        List<String> requriedList = new ArrayList<>();
-        List<String> optionalList = new ArrayList<>();
-        schemaValue.put("required", requriedList);
-        schemaValue.put("optional", optionalList);
-        return categoryRepository.save(category);
-    }
+    private CategoryAttributeRepository categoryAttributeRepository;
 
-    public Category findCategoryByName(String name) {
-        return categoryRepository.findByCategoryName(name);
+    public CategoryResponse createCategory(CategoryRequest request) {
+        Category byCategoryName = categoryRepository.findByCategoryName(request.getParentCategory());
+        Category category = Category.builder()
+                .categoryName(request.getCategoryName())
+                .parentCategory(byCategoryName)
+                .build();
+        Category saved = categoryRepository.save(category);
+        return CategoryResponse.builder()
+                .categoryId(saved.getCategoryId())
+                .categoryName(saved.getCategoryName())
+                .parentCategory(saved.getParentCategory())
+                .attributes(saved.getAttributes())
+                .build();
     }
 }

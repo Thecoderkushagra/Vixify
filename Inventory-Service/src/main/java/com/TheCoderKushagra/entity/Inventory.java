@@ -10,11 +10,9 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
-    // Reference to Product Service (SQL table in another microservice)
     @Column(name = "product_id", nullable = false)
     private String productId;
 
-    // Reference to User/Seller Service (Mongo document in another microservice)
     @Column(name = "seller_id", nullable = false)
     private String sellerId;
 
