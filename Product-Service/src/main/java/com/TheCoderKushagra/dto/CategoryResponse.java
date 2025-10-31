@@ -15,6 +15,6 @@ import java.util.List;
 public class CategoryResponse {
     private String categoryId;
     private String categoryName;
-    private Category parentCategory;
-    private List<CategoryAttribute> attributes = new ArrayList<>();
+    private String parentCategory;
+    private List<String> attributes;
 }

@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -32,16 +33,34 @@ public class CategoryService {
                 .parentCategory(myCategoryName)
                 .build();
         Category saved = categoryRepository.save(category);
+        List<String> attributeName = new ArrayList<>();
+        for(int i = 0; i <= saved.getAttributes().size() -1; i++){
+            CategoryAttribute categoryAttribute = saved.getAttributes().get(i);
+            attributeName.add(categoryAttribute.getAttributeName());
+        }
         return CategoryResponse.builder()
                 .categoryId(saved.getCategoryId())
                 .categoryName(saved.getCategoryName())
-                .parentCategory(saved.getParentCategory())
-                .attributes(saved.getAttributes())
+                .parentCategory(saved.getParentCategory() != null ?
+                        saved.getParentCategory().getCategoryName() : null)
+                .attributes(new ArrayList<>(attributeName))
                 .build();
     }
 
-    public List<Category> seeAllCategory() {
-        return categoryRepository.findAll();
+    public List<CategoryResponse> seeAllCategory() {
+        List<Category> all = categoryRepository.findAll();
+        // ====================================================> working on this function not completed
+        List<String> attributeName = new ArrayList<>();
+        // ====================================================> logic is not done
+        return all.stream()
+                .map(category -> CategoryResponse.builder()
+                        .categoryId(category.getCategoryId())
+                        .categoryName(category.getCategoryName())
+                        .parentCategory(category.getParentCategory() != null ?
+                                        category.getParentCategory().getCategoryName() : null)
+                        .attributes(new ArrayList<>())
+                        .build())
+                .toList();
     }
 
     public CategoryResponse upgradeCategory(String Id, CategoryRequest request) {
@@ -56,7 +75,7 @@ public class CategoryService {
         return CategoryResponse.builder()
                 .categoryId(saved.getCategoryId())
                 .categoryName(saved.getCategoryName())
-                .parentCategory(saved.getParentCategory())
+                .parentCategory(saved.getParentCategory().getCategoryName()) // ===========================> correct it
                 .attributes(saved.getAttributes())
                 .build();
     }

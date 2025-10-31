@@ -10,7 +10,8 @@ public class BrandService {
     @Autowired
     private BrandRepository brandRepository;
 
-    public Brand createBrand() {
-        return null;
+    public Brand createBrand(String brandName) {
+        Brand build = Brand.builder().name(brandName).build();
+        return brandRepository.save(build);
     }
 }

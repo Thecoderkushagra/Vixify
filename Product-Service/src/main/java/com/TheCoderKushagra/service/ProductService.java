@@ -14,4 +14,5 @@ public class ProductService {
     private ProductAttributeRepository AttributeRepository;
     @Autowired
     private ProductAttributeIndexRepository AttributeIndexRepository;
+
 }

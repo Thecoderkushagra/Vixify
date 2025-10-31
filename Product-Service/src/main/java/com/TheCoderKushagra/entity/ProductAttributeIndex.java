@@ -26,6 +26,5 @@ public class ProductAttributeIndex {
 
     private String stringValue;
     private Double numericValue;
-    private Boolean booleanValue;
     private LocalDateTime dateValue;
 }
